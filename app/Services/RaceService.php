@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: prasanthpillai
- * Date: 18/11/17
- * Time: 9:40 AM
+ * Race Services to hold the business logic for races
+ * @namespace App\Services
+ *
+ * @author: Prasanth Pillai <prasanthbpillai@gmail.com>
+ * @since 18-11-17
  */
 
 namespace App\Services;
