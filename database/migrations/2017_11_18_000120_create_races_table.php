@@ -20,7 +20,6 @@ class CreateRacesTable extends Migration
             $table->dateTimeTz('closing_time');
             $table->tinyInteger('active');
             $table->timestamps();
-            $table->timestamps();
         });
     }
 

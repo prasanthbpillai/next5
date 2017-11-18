@@ -15,6 +15,7 @@ class CreateRacetypeTable extends Migration
     {
         Schema::create('race_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('name');
             $table->timestamps();
         });
     }
