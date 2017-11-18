@@ -17,9 +17,19 @@ class RaceService
      * @param int $count
      * @return string
      */
-    public function getRaces ($count = 5)
+    public function getRaces ($count = 5, $type = null)
     {
-        return "testing";
+
+    }
+
+
+    /**
+     *
+     * @param $raceId
+     */
+    public function getRace ($raceId)
+    {
+
     }
 
 }

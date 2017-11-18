@@ -11,15 +11,48 @@ namespace App\Http\Controllers\API;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Auth\Access\Response;
 use App\Services\RaceService;
 
 class RaceController extends Controller
 {
 
-    public function all ($count = 5, RaceService $raceService)
+
+    /**
+     * @param RaceService $raceService
+     * @param int $count
+     * @param null $type
+     * @return mixed
+     */
+
+    public function all (RaceService $raceService, $count = 5, $type = null)
     {
-        return $raceService->getRaces();
+
+        try {
+            $data =  $raceService->getRaces($count, $type);
+        } catch (\Exception $e){
+            $data = array(
+                'code' => '404',
+                'response' => $e->getMessage()
+            );
+        }
+        return response()->json($data);
     }
 
+    /**
+     * @param RaceService $raceService
+     * @param $raceId
+     * @return mixed
+     */
+    public function get (RaceService $raceService, $raceId)
+    {
+        try {
+            $data =  $raceService->getRace($raceId);
+        } catch (\Exception $e){
+            $data = array(
+                'code' => '404',
+                'response' => $e->getMessage()
+            );
+        }
+        return response()->json($data);
+    }
 }
