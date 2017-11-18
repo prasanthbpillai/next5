@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRacetypeTable extends Migration
+class AlterRaceMeetingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateRacetypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('race_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('races', function (Blueprint $table) {
+            $table->addColumn('integer', 'meeting_id');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateRacetypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('race_types');
+        Schema::table('races', function (Blueprint $table) {
+            $table->dropColumn('meeting_id');
+        });
     }
 }

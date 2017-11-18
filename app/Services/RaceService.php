@@ -10,6 +10,8 @@
 namespace App\Services;
 
 
+use App\Models\Race;
+
 class RaceService
 {
 
@@ -25,11 +27,19 @@ class RaceService
 
 
     /**
-     *
      * @param $raceId
+     * @return mixed|static
+     * @throws \Exception
      */
     public function getRace ($raceId)
     {
+        $race = Race::find($raceId);
+
+        if ($race) {
+            return $race;
+        } else {
+            throw new \Exception('No race found with given details');
+        }
 
     }
 

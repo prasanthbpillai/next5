@@ -11,9 +11,9 @@
 namespace App\Models\Race;
 
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\Model;
 
-class Position extends Pivot
+class Position extends Model
 {
     protected $table = 'positions';
 }

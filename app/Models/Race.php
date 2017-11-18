@@ -22,7 +22,7 @@ class Race extends Model
      */
     public function competitors()
     {
-        return $this->hasMany('App\Models\Race\Competitor')->using('App\Models\Race\Position');
+        return $this->belongsToMany('App\Models\Race\Competitor', 'positions','competitor_id', 'race_id')->withPivot('position');
     }
 
     /**
