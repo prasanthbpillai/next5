@@ -16,13 +16,22 @@ class RaceService
 {
 
     /**
-     *
      * @param int $count
-     * @return string
+     * @param null $type
+     * @return \Illuminate\Support\Collection
+     * @throws \Exception
      */
     public function getRaces ($count = 5, $type = null)
     {
-
+        $races = Race::where('active', 1)
+                        ->orderBy('closing_time', 'desc')
+                        ->take(5)
+                        ->get();
+        if ($races){
+            return $races;
+        } else {
+            throw new \Exception('No races found at this moment');
+        }
     }
 
 

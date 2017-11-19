@@ -28,7 +28,8 @@ class RaceController extends Controller
     {
 
         try {
-            $data =  $raceService->getRaces($count, $type);
+            $data['response'] =  $raceService->getRaces($count, $type);
+            $data['code'] = 200;
         } catch (\Exception $e){
             $data = array(
                 'code' => '404',
