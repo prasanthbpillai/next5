@@ -47,7 +47,8 @@ class RaceController extends Controller
     public function get (RaceService $raceService, $raceId)
     {
         try {
-            $data =  $raceService->getRace($raceId);
+            $data['response'] =  $raceService->getRace($raceId);
+            $data['code'] = 200;
         } catch (\Exception $e){
             $data = array(
                 'code' => '404',

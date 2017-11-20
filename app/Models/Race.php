@@ -22,7 +22,7 @@ class Race extends Model
      */
     public function competitors()
     {
-        return $this->belongsToMany('App\Models\Race\Competitor', 'positions','competitor_id', 'race_id')->withPivot('position');
+        return $this->belongsToMany('App\Models\Race\Competitor', 'positions','race_id', 'competitor_id')->withPivot('position');
     }
 
     /**
@@ -32,5 +32,12 @@ class Race extends Model
     public function racetype()
     {
         return $this->hasOne('App\Models\Race\Type');
+    }
+
+    public function toArray()
+    {
+        $data = parent::toArray();
+        $data['competitors'] = $this->competitors;
+        return $data;
     }
 }
