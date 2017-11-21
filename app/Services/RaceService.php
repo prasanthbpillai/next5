@@ -11,6 +11,7 @@ namespace App\Services;
 
 
 use App\Models\Race;
+use Illuminate\Support\Facades\DB;
 
 class RaceService
 {
@@ -23,10 +24,13 @@ class RaceService
      */
     public function getRaces ($count = 5, $type = null)
     {
-        $races = Race::where('active', 1)
+
+         $races = Race::where('closing_time', '>', DB::raw('now()'))
                         ->orderBy('closing_time', 'desc')
                         ->take(5)
                         ->get();
+
+
         if ($races){
             return $races;
         } else {

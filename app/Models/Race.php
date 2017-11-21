@@ -31,13 +31,24 @@ class Race extends Model
      */
     public function racetype()
     {
-        return $this->hasOne('App\Models\Race\Type');
+        return $this->belongsTo('App\Models\Race\Type');
     }
 
+    /**
+     * Get the details in in eagerly loaded way
+     * @return array
+     */
     public function toArray()
     {
         $data = parent::toArray();
         $data['competitors'] = $this->competitors;
+        $data['meeting'] = $this->meeting;
+        $data['racetype'] = $this->racetype;
         return $data;
+    }
+
+    public function meeting()
+    {
+        return $this->belongsTo('App\Models\Meeting');
     }
 }
