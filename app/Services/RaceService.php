@@ -26,6 +26,7 @@ class RaceService
     {
 
          $races = Race::where('closing_time', '>', DB::raw('now()'))
+                        ->where('active', 1)
                         ->orderBy('closing_time', 'desc')
                         ->take(5)
                         ->get();
